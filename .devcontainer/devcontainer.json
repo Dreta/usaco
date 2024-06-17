@@ -17,7 +17,6 @@
         "vscode": {
             "extensions": [
                 "ms-vscode.cpptools-extension-pack",
-                "GitHub.copilot",
                 "oderwat.indent-rainbow"
             ]
         }

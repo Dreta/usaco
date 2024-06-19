@@ -8,7 +8,7 @@ vector<pair<int, int>> wormholes;
 map<int, int> closestRight;
 int result = 0;
 
-bool has_cycle(map<int, int>& currentCombination) {
+bool hasCycle(map<int, int>& currentCombination) {
     for (int start = 0; start < N; start++) {
         int pos = start;
         for (int count = 0; count < N; count++) {
@@ -27,7 +27,7 @@ void generatePairs(map<int, int> currentCombination) {
     }
 
     if (i == N) {
-        if (has_cycle(currentCombination)) {
+        if (hasCycle(currentCombination)) {
             result++;
         }
         return;

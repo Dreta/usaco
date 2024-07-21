@@ -5,9 +5,6 @@
 using namespace std;
 
 int main() {
-    freopen("sleepy.in", "r", stdin);
-    freopen("sleepy.out", "w", stdout);
-
     int N;
 
     cin >> N;

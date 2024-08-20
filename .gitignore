@@ -6,5 +6,8 @@
 
 # Unignore all dirs
 !*/
-a.out
+
+# Ignore output files
+*.in
+*.out
 vgcore*

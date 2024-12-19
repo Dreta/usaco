@@ -44,7 +44,7 @@ public:
         adj[u].push_back(v);
     }
 
-    vector<int> adjacent(int u) {
+    vector<int> adjacent(int u) const {
         return adj[u];
     }
 
@@ -59,25 +59,27 @@ public:
 };
 
 class DepthFirstTraversal {
-    private:
+private:
     vector<bool> marked;
     vector<int> edgeTo;
+    const DirectedGraph& graph;
 
-    void dfs(DirectedGraph graph, int vertex) {
+    void dfs(int vertex) {
         marked[vertex] = true;
         for (int neighbor : graph.adjacent(vertex)) {
             if (!marked[neighbor]) {
                 edgeTo[neighbor] = vertex;
-                dfs(graph, neighbor);
+                dfs(neighbor);
             }
         }
     }
 
-    public:
-    DepthFirstTraversal(DirectedGraph graph, int start) {
+public:
+    DepthFirstTraversal(const DirectedGraph& graph, int start) 
+        : graph(graph) {
         this->marked = vector<bool>(graph.vertices, false);
         this->edgeTo = vector<int>(graph.vertices, -1);
-        dfs(graph, start);
+        dfs(start);
     }
 
     bool hasPathTo(int vertex) {

@@ -1,4 +1,5 @@
 #include <vector>
+#include <queue>
 using namespace std;
 
 class UndirectedGraph {
@@ -66,6 +67,23 @@ void dfs(const UndirectedGraph &graph, long long u) {
     for (auto neighbor : graph.adj[u]) {
         if (!visited[neighbor]) {
             dfs(graph, neighbor);
+        }
+    }
+}
+
+void bfs(const UndirectedGraph &graph, long long u) {
+    queue<int> q;
+    q.push(u);
+    visited[u] = true;
+    while (!q.empty()) {
+        int u = q.front();
+        q.pop();
+        // Processing visited node
+        for (auto neighbor : graph.adj[u]) {
+            if (!visited[neighbor]) {
+                q.push(neighbor);
+                visited[neighbor] = true;
+            }
         }
     }
 }

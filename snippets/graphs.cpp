@@ -58,31 +58,14 @@ public:
     }
 };
 
-class DepthFirstTraversal {
-private:
-    vector<bool> marked;
-    vector<int> edgeTo;
-    const DirectedGraph& graph;
+vector<bool> visited;
 
-    void dfs(int vertex) {
-        marked[vertex] = true;
-        for (int neighbor : graph.adjacent(vertex)) {
-            if (!marked[neighbor]) {
-                edgeTo[neighbor] = vertex;
-                dfs(neighbor);
-            }
+void dfs(const UndirectedGraph &graph, long long u) {
+    visited[u] = true;
+    // Processing visited node
+    for (auto neighbor : graph.adj[u]) {
+        if (!visited[neighbor]) {
+            dfs(graph, neighbor);
         }
     }
-
-public:
-    DepthFirstTraversal(const DirectedGraph& graph, int start) 
-        : graph(graph) {
-        this->marked = vector<bool>(graph.vertices, false);
-        this->edgeTo = vector<int>(graph.vertices, -1);
-        dfs(start);
-    }
-
-    bool hasPathTo(int vertex) {
-        return marked[vertex];
-    }
-};
+}

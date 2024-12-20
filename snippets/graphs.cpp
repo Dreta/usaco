@@ -71,6 +71,13 @@ void dfs(const UndirectedGraph &graph, long long u) {
     }
 }
 
+void treeTraversal(const DirectedGraph &graph, long long u) {
+    // Processing
+    for (auto neighbor : graph.adj[u]) {
+        dfs(graph, neighbor);
+    }
+}
+
 void bfs(const UndirectedGraph &graph, long long u) {
     queue<int> q;
     q.push(u);

@@ -72,7 +72,7 @@ void dfs(const UndirectedGraph &graph, long long u) {
 }
 
 void treeTraversal(const DirectedGraph &graph, long long u) {
-    // Processing
+    // Processing visited node
     for (auto neighbor : graph.adj[u]) {
         dfs(graph, neighbor);
     }
